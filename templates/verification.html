@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Verification{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-slate-100 flex justify-center items-center">
+
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-4xl">
+
+        <h1 class="text-3xl font-bold text-center">
+            Identity Verification
+        </h1>
+
+        <div class="grid grid-cols-2 gap-8 mt-8">
+
+            <!-- Camera -->
+
+            <div>
+
+                <div
+                    class="bg-gray-200 rounded-lg h-80 flex items-center justify-center">
+
+                    Camera will appear here
+
+                </div>
+
+            </div>
+
+            <!-- Status -->
+
+            <div>
+
+                <div class="border rounded-lg p-5">
+
+                    <h2 class="font-semibold text-xl">
+                        Instructions
+                    </h2>
+
+                    <ul class="mt-4 space-y-2 list-disc ml-5">
+
+                        <li>Look straight at the camera.</li>
+
+                        <li>Keep your face inside the frame.</li>
+
+                        <li>Blink two times.</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="border rounded-lg p-5 mt-6">
+
+                    <h2 class="font-semibold">
+                        Status
+                    </h2>
+
+                    <p class="mt-3">
+                        Waiting...
+                    </p>
+
+                    <p class="mt-3">
+                        Blink Count: <span id="blink-count">0</span>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

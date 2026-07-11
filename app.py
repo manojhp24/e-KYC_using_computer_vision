@@ -1,10 +1,16 @@
-from flask import Flask,render_template
+from flask import Flask
+from routes import  home_bp, verifiction_bp
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+    app.register_blueprint(home_bp)
+    app.register_blueprint(verifiction_bp)
+
+    return app
+
+app = create_app()
+
 
 
 

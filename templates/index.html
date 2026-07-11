@@ -1,14 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-KYC System</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <h1>AI-Based E-KYC Verification System</h1>
-    <p>Project setup completed successfully.</p>
+{% block title %}Home{% endblock %}
 
-</body>
-</html>
+{% block content %}
+
+<div class="min-h-screen flex items-center justify-center">
+
+    <div class="bg-white rounded-xl shadow-lg p-10 w-full max-w-lg">
+
+        <h1 class="text-3xl font-bold text-center text-blue-600">
+            AI-Based E-KYC Verification
+        </h1>
+
+        <p class="text-gray-600 text-center mt-3">
+            Verify your identity securely using Computer Vision.
+        </p>
+
+        <div class="mt-8 text-center">
+            <a href="{{ url_for('verification.verification') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition inline-block">
+                Start Verification
+            </a>
+        </div>
+
+        <div class="mt-8 border rounded-lg p-4 bg-gray-50">
+            <h2 class="font-semibold">Status</h2>
+
+            <p class="text-gray-500 mt-2">
+                Waiting for user...
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

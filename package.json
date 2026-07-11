@@ -1,0 +1,26 @@
+{
+  "name": "ekyc_system_using_computer_vision",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build":"tailwindcss -i ./static/src/input.css -o ./static/css/output.css",
+    "watch" : "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manojhp24/e-KYC_using_computer_vision.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/manojhp24/e-KYC_using_computer_vision/issues"
+  },
+  "homepage": "https://github.com/manojhp24/e-KYC_using_computer_vision#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "tailwindcss": "^4.3.2"
+  }
+}
