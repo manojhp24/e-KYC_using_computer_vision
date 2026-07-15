@@ -1,76 +1,77 @@
-{% extends "base.html" %}
-
-{% block title %}Verification{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Verification{% endblock %} {% block
+content %}
 
 <div class="min-h-screen bg-slate-100 flex justify-center items-center">
+  <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-4xl">
+    <h1 class="text-3xl font-bold text-center">Identity Verification</h1>
 
-    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-4xl">
+    <div class="grid grid-cols-2 gap-8 mt-8">
+      <!-- Camera -->
 
-        <h1 class="text-3xl font-bold text-center">
-            Identity Verification
-        </h1>
+      <div class="relative rounded-xl overflow-hidden bg-black">
+        <video
+          id="camera"
+          autoplay
+          playsinline
+          muted
+          class="w-full h-[500px] object-contain bg-black"
+        ></video>
 
-        <div class="grid grid-cols-2 gap-8 mt-8">
+        <canvas
+          id="overlay"
+          class="absolute inset-0 w-full h-full object-contain"
+        >
+        </canvas>
+      </div>
+      <div class="mt-4">
+        <h3 class="font-semibold">Captured Face</h3>
 
-            <!-- Camera -->
+        <img
+          id="captured-image"
+          class="mt-2 rounded-lg border w-64"
+          alt="Captured Face"
+        />
+      </div>
 
-            <div>
+      <!-- Status -->
 
-                <div
-                    class="bg-gray-200 rounded-lg h-80 flex items-center justify-center">
+      <div>
+        <div class="border rounded-lg p-5">
+          <h2 class="font-semibold text-xl">Instructions</h2>
 
-                    Camera will appear here
+          <ul class="mt-4 space-y-2 list-disc ml-5">
+            <li>Look straight at the camera.</li>
 
-                </div>
+            <li>Keep your face inside the frame.</li>
 
-            </div>
-
-            <!-- Status -->
-
-            <div>
-
-                <div class="border rounded-lg p-5">
-
-                    <h2 class="font-semibold text-xl">
-                        Instructions
-                    </h2>
-
-                    <ul class="mt-4 space-y-2 list-disc ml-5">
-
-                        <li>Look straight at the camera.</li>
-
-                        <li>Keep your face inside the frame.</li>
-
-                        <li>Blink two times.</li>
-
-                    </ul>
-
-                </div>
-
-                <div class="border rounded-lg p-5 mt-6">
-
-                    <h2 class="font-semibold">
-                        Status
-                    </h2>
-
-                    <p class="mt-3">
-                        Waiting...
-                    </p>
-
-                    <p class="mt-3">
-                        Blink Count: <span id="blink-count">0</span>
-                    </p>
-
-                </div>
-
-            </div>
-
+            <li>Blink two times.</li>
+          </ul>
         </div>
 
-    </div>
+        <div class="border rounded-lg p-5 mt-6">
+          <h2 class="font-semibold">Status</h2>
+          <p>
+            Face:
+            <span id="face-status">Not Detected</span>
+          </p>
 
+          <p>
+            Blink Count:
+            <span id="blink-count">0</span>
+          </p>
+
+          <p>
+            Liveness:
+            <span id="liveness-status">Waiting...</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<script
+  type="module"
+  src="{{ url_for('static', filename='js/verification.js') }}"
+></script>
 
 {% endblock %}

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"tailwindcss -i ./static/src/input.css -o ./static/css/output.css",
-    "watch" : "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch"
+    "build": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css",
+    "watch": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.2",
     "tailwindcss": "^4.3.2"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.35"
   }
 }
