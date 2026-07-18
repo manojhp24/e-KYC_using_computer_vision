@@ -1,33 +1,56 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}E-KYC Portal{% endblock %}
 
 {% block content %}
 
-<div class="min-h-screen flex items-center justify-center">
+<div class="min-h-screen flex items-center justify-center p-4">
 
-    <div class="bg-white rounded-xl shadow-lg p-10 w-full max-w-lg">
+    <div class="glass-panel rounded-2xl p-10 w-full max-w-lg relative overflow-hidden shadow-2xl animate-breathing">
+        <!-- Glowing corner decorations -->
+        <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500 rounded-tl-xl"></div>
+        <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-500 rounded-tr-xl"></div>
+        <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyan-500 rounded-bl-xl"></div>
+        <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500 rounded-br-xl"></div>
 
-        <h1 class="text-3xl font-bold text-center text-blue-600">
-            AI-Based E-KYC Verification
-        </h1>
+        <div class="flex flex-col items-center">
+            <!-- Biometric Scanning Graphic -->
+            <div class="relative w-32 h-32 mb-8 bg-slate-900/60 rounded-full flex items-center justify-center border border-slate-700/50 shadow-inner">
+                <svg class="w-16 h-16 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                </svg>
+                <div class="absolute inset-2 border-2 border-dashed border-cyan-500/30 rounded-full animate-spin [animation-duration:15s]"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent rounded-full"></div>
+            </div>
 
-        <p class="text-gray-600 text-center mt-3">
-            Verify your identity securely using Computer Vision.
-        </p>
+            <h1 class="text-3xl font-extrabold tracking-tight text-center bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent font-outfit">
+                AI-Based E-KYC
+            </h1>
 
-        <div class="mt-8 text-center">
-            <a href="{{ url_for('verification.verification') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition inline-block">
-                Start Verification
-            </a>
-        </div>
-
-        <div class="mt-8 border rounded-lg p-4 bg-gray-50">
-            <h2 class="font-semibold">Status</h2>
-
-            <p class="text-gray-500 mt-2">
-                Waiting for user...
+            <p class="text-slate-400 text-center mt-3 max-w-sm text-sm">
+                Verify your identity securely using advanced facial landmarks and liveness check.
             </p>
+
+            <div class="mt-8 text-center w-full">
+                <a href="{{ url_for('verification.verification') }}" class="relative group overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/40 inline-flex items-center space-x-2 w-full justify-center">
+                    <span>Start Identity Verification</span>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="mt-8 border border-slate-800 rounded-xl p-4 bg-slate-950/40 w-full flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                    </span>
+                    <span class="text-xs text-slate-400">System Ready</span>
+                </div>
+                <span class="text-xs text-slate-500">v1.0.0</span>
+            </div>
+
         </div>
 
     </div>

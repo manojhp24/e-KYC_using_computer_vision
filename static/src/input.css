@@ -1,1 +1,72 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+@keyframes scan {
+  0%, 100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 100%;
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse-glow-cyan {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.8), 0 0 10px rgba(6, 182, 212, 0.4);
+  }
+}
+
+@keyframes pulse-glow-emerald {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 10px rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.6);
+  }
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.01);
+    opacity: 1;
+  }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
+
+.animate-pulse-cyan {
+  animation: pulse-glow-cyan 2s ease-in-out infinite;
+}
+
+.animate-pulse-emerald {
+  animation: pulse-glow-emerald 2s ease-in-out infinite;
+}
+
+.animate-breathing {
+  animation: breathing 4s ease-in-out infinite;
+}
+
+/* Custom Backdrop Glassmorphism */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}

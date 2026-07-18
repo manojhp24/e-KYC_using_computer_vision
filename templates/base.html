@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}E-KYC System{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/output.css') }}"
     >
 </head>
-<body class="bg-slate-100">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-full flex flex-col selection:bg-cyan-500 selection:text-white relative overflow-x-hidden">
+    <!-- Deep futuristic background gradient glows -->
+    <div class="fixed inset-0 -z-10 bg-slate-950 overflow-hidden">
+        <div class="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] rounded-full bg-blue-900/15 blur-[120px] pointer-events-none"></div>
+        <div class="absolute -bottom-[40%] -right-[20%] w-[80%] h-[80%] rounded-full bg-cyan-900/15 blur-[120px] pointer-events-none"></div>
+    </div>
 
     {% block content %}{% endblock %}
 

@@ -1,10 +1,10 @@
-import { FilesetResolver, FaceLandmarker } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14";
+import { FilesetResolver, FaceLandmarker } from "./lib/vision_bundle.mjs";
 
 let faceLandmarker;
 
 export async function loadFaceLandmarker() {
   const vision = await FilesetResolver.forVisionTasks(
-    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm",
+    "/static/js/mediapipe/lib/wasm",
   );
 
   faceLandmarker = await FaceLandmarker.createFromOptions(

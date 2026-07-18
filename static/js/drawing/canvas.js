@@ -24,3 +24,7 @@ export function drawLandmarks(video,landmarks){
         ctx.fill();
     }
 }
+
+export function clearCanvas(){
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+}
