@@ -27,8 +27,8 @@ export function cropFace(video, landmarks) {
   const faceWidth = maxX - minX;
   const faceHeight = maxY - minY;
 
-  const paddingX = faceWidth * 0.18;
-  const paddingY = faceHeight * 0.18;
+  const paddingX = faceWidth * 0.20;
+  const paddingY = faceHeight * 0.20;
 
   minX -= paddingX;
   minY -= paddingY;
