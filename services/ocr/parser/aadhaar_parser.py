@@ -1,0 +1,19 @@
+class AadhaarParser:
+
+    def clean_text(self, ocr_output):
+        ...
+
+    def extract_aadhaar_number(self, cleaned_text):
+        ...
+
+    def extract_name(self, cleaned_text):
+        ...
+
+    def extract_gender(self, cleaned_text):
+        ...
+
+    def extract_dob(self, cleaned_text):
+        ...
+
+    def parse(self, ocr_output):
+        ...
