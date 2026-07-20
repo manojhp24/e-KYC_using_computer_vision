@@ -11,7 +11,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
 
-    full_name: Mapped[str] = mapped_column(
+    name: Mapped[str] = mapped_column(
         String(100),
         nullable=False,
     )
@@ -27,14 +27,14 @@ class User(Base):
         nullable=False,
     )
 
-    dob: Mapped[str] = mapped_column(
+    date_of_birth: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
     )
 
     gender: Mapped[str] = mapped_column(
         String(20),
-        nullable=False,
+        nullable=True,
     )
 
     address: Mapped[str] = mapped_column(
@@ -44,7 +44,7 @@ class User(Base):
 
     face_embedding: Mapped[bytes] = mapped_column(
         LargeBinary,
-        nullable=False,
+        nullable=True,
     )
 
     created_at: Mapped[datetime] = mapped_column(

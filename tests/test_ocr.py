@@ -11,7 +11,7 @@ from services.ocr.ocr_service import OCRService
 
 def main():
 
-    image_path = Path("uploads/ids/bd8d7371-a219-4199-a7f3-a4e311abeb33.jpeg")
+    image_path = Path("uploads/ids/b30cd661-30e9-4054-8e0d-90b4b3af66f2.jpeg")
 
     ocr_service = OCRService()
 

@@ -6,9 +6,6 @@ from typing import Any
 class VerificationResult:
     success: bool
     message: str
+    user_exists: bool = False
     ocr_data: dict[str, Any] | None = None
     face_match: bool | None = None
-
-    user_exists: bool | None = None
-    confidence: float | None = None
-    user_id: int | None = None

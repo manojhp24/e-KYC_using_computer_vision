@@ -1,6 +1,6 @@
-from sqlalchemy import select
 import numpy as np
 from loguru import logger
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from database.models import User
@@ -42,10 +42,10 @@ class UserRepository:
 
     def create_user(
         self,
-        full_name: str,
+        name: str,
         id_number: str,
         id_type: str,
-        dob: str,
+        date_of_birth: str,
         gender: str,
         address: str | None,
         face_embedding: np.ndarray,
@@ -54,10 +54,10 @@ class UserRepository:
         embedding_bytes = self._embedding_to_bytes(face_embedding)
 
         user = User(
-            full_name=full_name,
+            name=name,
             id_number=id_number,
             id_type=id_type,
-            dob=dob,
+            date_of_birth=date_of_birth,
             gender=gender,
             address=address,
             face_embedding=embedding_bytes,

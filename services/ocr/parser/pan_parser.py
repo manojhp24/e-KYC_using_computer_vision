@@ -79,9 +79,11 @@ class PANParser:
         cleaned_text = self.clean_text(ocr_output)
 
         pan_id_data = {
-            "document_type": "PAN",
-            "pan_number": self.extract_pan_text(cleaned_text),
+            "id_type": "PAN",
+            "id_number": self.extract_pan_text(cleaned_text),
             "name": self.extract_name(cleaned_text),
+            "gender": None,
+            "address": None,
             "father_name": self.extract_father_name(cleaned_text),
             "date_of_birth": self.extract_dob(cleaned_text),
         }

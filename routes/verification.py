@@ -1,9 +1,13 @@
+from dataclasses import asdict
+
 from flask import Blueprint, jsonify, render_template, request
 
 from services.upload.upload_service import UploadService
+from services.verification.verification_service import VerificationService
 
 verification_bp = Blueprint("verification", __name__)
 upload_service = UploadService()
+verification_service = VerificationService()
 
 
 @verification_bp.route("/verification")
@@ -43,3 +47,18 @@ def upload_live_face():
     saved_path = upload_service.save_file(uploaded_file, "live")
 
     return jsonify({"success": True, "path": saved_path}), 200
+
+
+@verification_bp.route("/api/verify", methods=["POST"])
+def verify():
+
+    data = request.get_json()
+
+    result = verification_service.verify_user(
+        id_image_path=data["id_image_path"],
+        live_image_path=data["live_image_path"],
+        id_type=data["id_type"],
+        liveness_passed=data["liveness_passed"],
+    )
+
+    return jsonify(asdict(result)), 200

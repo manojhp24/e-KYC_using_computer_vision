@@ -1,3 +1,5 @@
+let uploadedIdPath = null;
+
 export function initializeUpload() {
   const input = document.getElementById("id-upload");
   const preview = document.getElementById("id-card-preview");
@@ -25,9 +27,12 @@ export function initializeUpload() {
         });
         const result = await response.json();
 
+        if (result.success) {
+          uploadedIdPath = result.path;
+        }
         console.log(result);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     });
   }
@@ -37,6 +42,7 @@ export function initializeUpload() {
       e.preventDefault();
       e.stopPropagation();
       if (input) input.value = "";
+      uploadedIdPath = null;
       if (preview) {
         preview.src = "";
         preview.classList.add("hidden");
@@ -45,4 +51,9 @@ export function initializeUpload() {
       resetBtn.classList.add("hidden");
     });
   }
+}
+
+
+export function getUploadedIdPath() {
+    return uploadedIdPath;
 }
