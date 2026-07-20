@@ -1,10 +1,13 @@
-from pathlib import Path
-import cv2
 import sys
+from pathlib import Path
+
+import cv2
+
 from services.face.detector import FaceDetector
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
+
 
 def main() -> None:
     detector = FaceDetector()

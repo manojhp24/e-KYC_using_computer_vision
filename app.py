@@ -1,5 +1,7 @@
 from flask import Flask
-from routes import  home_bp, verification_bp
+
+from routes import home_bp, verification_bp
+
 
 def create_app():
     app = Flask(__name__)
@@ -9,9 +11,8 @@ def create_app():
 
     return app
 
+
 app = create_app()
-
-
 
 
 if __name__ == "__main__":

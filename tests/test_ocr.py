@@ -1,4 +1,3 @@
-from pathlib import Path
 import sys
 from pathlib import Path
 
@@ -16,10 +15,7 @@ def main():
 
     ocr_service = OCRService()
 
-    result = ocr_service.extract(
-        image_path=image_path,
-        id_type="pan"
-    )
+    result = ocr_service.extract(image_path=image_path, id_type="pan")
 
     logger.info(result)
 

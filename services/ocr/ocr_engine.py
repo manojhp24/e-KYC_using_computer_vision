@@ -1,11 +1,12 @@
+from typing import List
+
 import easyocr
 from loguru import logger
-from typing import List
 
 
 class OCREngine:
 
-    def __init__(self,languages: List[str] | None = None):
+    def __init__(self, languages: List[str] | None = None):
 
         if languages is None:
             languages = ["en"]
@@ -14,7 +15,7 @@ class OCREngine:
         self.reader = easyocr.Reader(languages)
         logger.info("EasyOCR model loaded successfully.")
 
-    def extract_text(self,image):
+    def extract_text(self, image):
 
         logger.info("Running OCR...")
 
@@ -22,12 +23,9 @@ class OCREngine:
 
         extracted_text = []
 
-        for _,text,_ in results:
+        for _, text, _ in results:
             extracted_text.append(text.strip())
 
         logger.info(f"Detected {len(extracted_text)} text regions.")
 
         return extracted_text
-
-        
-

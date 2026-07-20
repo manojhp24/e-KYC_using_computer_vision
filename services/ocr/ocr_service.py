@@ -1,10 +1,10 @@
-
-
 from pathlib import Path
+
 from loguru import logger
-from services.ocr.preprocessor import OCRPreprocessor
+
 from services.ocr.ocr_engine import OCREngine
 from services.ocr.postprocessor import OCRPostProcessor
+from services.ocr.preprocessor import OCRPreprocessor
 
 
 class OCRService:
@@ -15,14 +15,14 @@ class OCRService:
         self.postprocessor = OCRPostProcessor()
 
     def extract(self, image_path: str | Path, id_type: str) -> dict:
-        
+
         logger.info("Starting OCR pipeline...")
 
         processed_image = self.preprocessor.preprocess(image_path)
 
         raw_text = self.orc_engine.extract_text(processed_image)
 
-        extracted_data = self.postprocessor.postprocess(id_type,raw_text)
+        extracted_data = self.postprocessor.postprocess(id_type, raw_text)
 
         logger.success("OCR pipeline completed successfully.")
 

@@ -1,12 +1,13 @@
-from services.face import detector
 import sys
-from services.face.detector import FaceDetector
-from services.face.encoder import FaceEncoder
-from services.face.matcher import FaceMatcher 
 from pathlib import Path
 
+from services.face import detector
+from services.face.detector import FaceDetector
+from services.face.encoder import FaceEncoder
+from services.face.matcher import FaceMatcher
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0,str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT))
 
 
 def main() -> None:
@@ -29,7 +30,9 @@ def main() -> None:
 
     matcher = FaceMatcher()
 
-    distance = matcher.calculate_distance(embedding1=id_embedding,embedding2=live_embedding)
+    distance = matcher.calculate_distance(
+        embedding1=id_embedding, embedding2=live_embedding
+    )
 
     print(f"Distance: {distance:.4f}")
 
@@ -37,6 +40,7 @@ def main() -> None:
         print("Same person")
     else:
         print("Not same person")
+
 
 if __name__ == "__main__":
     main()

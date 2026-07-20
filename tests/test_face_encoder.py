@@ -1,10 +1,12 @@
 import sys
-from services.face.detector import FaceDetector
-from services.face.encoder import FaceEncoder
 from pathlib import Path
 
+from services.face.detector import FaceDetector
+from services.face.encoder import FaceEncoder
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0,str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT))
+
 
 def main() -> None:
 
@@ -23,7 +25,8 @@ def main() -> None:
     print(f"Length: {len(embedding)}")
 
     print("\nFirst 10 values:")
-    print(embedding[:10]) 
+    print(embedding[:10])
+
 
 if __name__ == "__main__":
     main()
