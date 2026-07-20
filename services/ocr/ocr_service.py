@@ -1,6 +1,6 @@
 
 
-from PIL.ImagePath import Path
+from pathlib import Path
 from loguru import logger
 from services.ocr.preprocessor import OCRPreprocessor
 from services.ocr.ocr_engine import OCREngine
