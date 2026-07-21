@@ -1,31 +1,39 @@
+let cameraStream = null;
 
 export async function startCamera(video) {
+  try {
+    cameraStream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        width: 1280,
+        height: 720,
+        facingMode: "user",
+      },
+      audio: false,
+    });
 
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video:{
-                width:1280,
-                height:720,
-                facingMode:"user"
-            },
-            audio:false
-        })
-         video.srcObject = stream
-         console.log("Camera started")
-    } catch (error) {
-        console.error(error);
-        alert("Camera access denied or unavailable.");
-    }
-    
+    video.srcObject = cameraStream;
+    await video.play();
+
+    console.log("Camera started");
+  } catch (error) {
+    console.error(error);
+  }
 }
 
+export function stopCamera(video) {
+  if (cameraStream) {
+    cameraStream.getTracks().forEach((track) => {
+      console.log(track.readyState);
+      track.stop();
+      console.log(track.readyState);
+    });
 
-export function stopCamera(video){
-    const stream = video.srcObject;
+    cameraStream = null;
+  }
 
-    if(!stream) return;
-
-    stream.getTracks().forEach(track => track.stop());
-
+  if (video) {
+    video.pause();
     video.srcObject = null;
+  }
+
 }

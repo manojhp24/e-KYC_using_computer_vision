@@ -18,18 +18,40 @@ const blinkDetector = new BlinkDetector();
 
 let livenessPassed = false;
 let isProcessing = true;
+let cameraRunning = false;
 
 async function init() {
-  initializeUpload();
+  scanningLine.classList.add("hidden");
+  initializeUpload(
+  async () => {
+    await startDetection();
+  },
+  () => {
+    stopDetection();
+  }
+);
+
+}
+
+async function startDetection() {
+  if (cameraRunning) return;
+
+  cameraRunning = true;
+  isProcessing = true;
 
   await startCamera(video);
-
   await loadFaceLandmarker();
 
-  console.log("Camera Ready");
-  console.log("MediaPipe Ready");
 
   requestAnimationFrame(processFrame);
+}
+
+function stopDetection() {
+  cameraRunning = false;
+  isProcessing = false;
+
+  stopCamera(video);
+  clearCanvas();
 }
 
 function displayVerificationResult(verificationResult) {
@@ -54,25 +76,25 @@ function displayVerificationResult(verificationResult) {
 
   const ocr = verificationResult.ocr_data || {};
 
-  document.getElementById("result-name").textContent =
-    ocr.name ?? "-";
+  document.getElementById("result-name").textContent = ocr.name ?? "-";
 
   document.getElementById("result-id-number").textContent =
     ocr.id_number ?? "-";
 
-  document.getElementById("result-id-type").textContent =
-    ocr.id_type ?? "-";
+  document.getElementById("result-id-type").textContent = ocr.id_type ?? "-";
 
-  document.getElementById("result-dob").textContent =
-    ocr.date_of_birth ?? "-";
+  document.getElementById("result-dob").textContent = ocr.date_of_birth ?? "-";
 
   document.getElementById("result-face-match").textContent =
-    verificationResult.face_match
-      ? "✔ Matched"
-      : "✖ Not Matched";
+    verificationResult.face_match ? "✔ Matched" : "✖ Not Matched";
 }
 
 async function processFrame() {
+
+  if(!cameraRunning){
+    return
+  }
+  
   if (!isProcessing) return;
 
   const result = detectFace(video);
@@ -102,7 +124,6 @@ async function processFrame() {
         image.src = faceCanvas.toDataURL("image/jpeg");
         const uploadResult = await uploadLiveFace(faceCanvas);
 
-        console.log(uploadResult);
         const liveFacePath = uploadResult.path;
 
         const idImagePath = getUploadedIdPath();
@@ -111,7 +132,7 @@ async function processFrame() {
           console.error("ID image has not been uploaded.");
           return;
         }
-         image.classList.remove("hidden");
+        image.classList.remove("hidden");
 
         scanningLine.classList.add("hidden");
         document.getElementById("loading-overlay").classList.remove("hidden");
@@ -125,15 +146,11 @@ async function processFrame() {
           livenessPassed,
         });
 
-        console.log(verificationResult);
-        console.log(verificationResult.ocr_data);
+ 
 
         document.getElementById("loading-overlay").classList.add("hidden");
 
         displayVerificationResult(verificationResult);
-
-       
-        
 
         // Trigger Toastr notification after face capture is done
         if (typeof toastr !== "undefined") {

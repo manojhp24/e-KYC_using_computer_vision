@@ -1,10 +1,12 @@
 let uploadedIdPath = null;
 
-export function initializeUpload() {
+export function initializeUpload(onUploadSuccess,onReset) {
   const input = document.getElementById("id-upload");
   const preview = document.getElementById("id-card-preview");
   const prompt = document.getElementById("id-upload-prompt");
   const resetBtn = document.getElementById("id-reset-btn");
+
+
 
   if (input) {
     input.addEventListener("change", async () => {
@@ -29,8 +31,11 @@ export function initializeUpload() {
 
         if (result.success) {
           uploadedIdPath = result.path;
+
+          if(onUploadSuccess){
+            onUploadSuccess(result.path)
+          }
         }
-        console.log(result);
       } catch (error) {
         console.error(error);
       }
@@ -49,6 +54,10 @@ export function initializeUpload() {
       }
       if (prompt) prompt.classList.remove("hidden");
       resetBtn.classList.add("hidden");
+
+      if(onReset){
+        onReset()
+      }
     });
   }
 }
